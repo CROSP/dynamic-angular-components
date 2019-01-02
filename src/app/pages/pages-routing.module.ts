@@ -5,6 +5,8 @@ import {PagesComponent} from './pages.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {ECommerceComponent} from './e-commerce/e-commerce.component';
 import {NotFoundComponent} from './miscellaneous/not-found/not-found.component';
+import {DashboardHeaderComponent} from "./dashboard/dashboard.header.component";
+import {DashboardSidebarComponent} from "./dashboard/dashboard.sidebar.component";
 
 const routes: Routes = [{
     path: '',
@@ -14,8 +16,24 @@ const routes: Routes = [{
         component: ECommerceComponent,
     }, {
         path: 'iot-dashboard',
-        data: {title: 'IOT Dashboard'},
-        component: DashboardComponent,
+        children: [
+            {
+                data: {title: 'IOT Dashboard'},
+                path: '',
+                component: DashboardComponent,
+            },
+            {
+                outlet: 'header-top',
+                path: '',
+                component: DashboardHeaderComponent,
+            },
+            {
+                outlet: 'sidebar-top',
+                path: '',
+                component: DashboardSidebarComponent,
+            },
+        ],
+
     }, {
         path: 'ui-features',
         loadChildren: './ui-features/ui-features.module#UiFeaturesModule',

@@ -20,9 +20,6 @@ import {StateService} from '../../../@core/data/state.service';
             <nb-layout-header fixed>
                 <ngx-header [position]="sidebar.id === 'start' ? 'normal': 'inverse'"></ngx-header>
             </nb-layout-header>
-            <div class="sidebar-dynamic-content">
-                <router-outlet name="sidebar-top"></router-outlet>
-            </div>
             <nb-sidebar class="menu-sidebar"
                         tag="menu-sidebar"
                         responsive
@@ -31,6 +28,9 @@ import {StateService} from '../../../@core/data/state.service';
                     <a href="#" class="btn btn-hero-success main-btn">
                         <i class="ion ion-social-github"></i> <span>Support Us</span>
                     </a>
+                    <div class="sidebar-dynamic-content">
+                        <router-outlet name="sidebar-top"></router-outlet>
+                    </div>
                 </nb-sidebar-header>
                 <ng-content select="nb-menu"></ng-content>
             </nb-sidebar>
